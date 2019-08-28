@@ -10,5 +10,18 @@ public class A1Novice {
 
 		// Your code follows here.
 		
+		int customerNumber = scan.nextInt();
+		
+		for (int i=0; i<customerNumber; i++) {
+			String customerName = scan.next();
+			int numItems = scan.nextInt();
+			int numItem = scan.nextInt();
+			int cost = scan.nextInt();
+			
+		}
+		
+		
 	}
+	
+	
 }
