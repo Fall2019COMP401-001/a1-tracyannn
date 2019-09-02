@@ -12,7 +12,7 @@ public class A1Jedi {
 		// Collaborated with classmate Fayyaz Sulman
 
 
-		//copied code from Adept
+		//copied some code from Adept
 		// create store items array
 		int storeItems = scan.nextInt();
 		String[] itemName = new String[storeItems];
@@ -27,22 +27,20 @@ public class A1Jedi {
 		// creates customer name and cart total array
 
 		int numberOfCustomers = scan.nextInt();
-
 		String[] customerName = new String[numberOfCustomers];
 		double[] priceOfCart = new double[numberOfCustomers];
 		int[] howManyCustomers = new int[storeItems];
 		int[] howManyItems = new int[storeItems];
-		
+		int[] var1 = new int[storeItems];
+
 
 		// first for loop for each individual customer
-		
+
 		for (int j=0; j<numberOfCustomers; j++) {
 			String firstName = scan.next();
 			String lastName = scan.next();
 			String name = firstName + " " + lastName;
-
 			customerName[j] = name;
-
 			int items = scan.nextInt();
 
 			// first nested for loop for each unique item in one customer's cart
@@ -50,47 +48,34 @@ public class A1Jedi {
 			for (int k = 0; k < items; k ++) {
 				int numberOfFood = scan.nextInt();
 				String nameOfCurrFood = scan.next();
+				
 
-
-
+				// second nested for loop to test whether that unique item matches up with the same index at the store item array.
+				// this is so we can test whether any customers bought that particular item
 
 				for (int n=0; n<storeItems; n++) {
 					if (nameOfCurrFood.equals(itemName[n])) {
-						howManyCustomers[n] = n + 1;
-						howManyItems[n] = n + numberOfFood;
-
-
-
-
-
+						var1[n] += 1;
+						if (var1[n] > 1) {
+							howManyItems[n] += numberOfFood;
+						} else {
+							howManyCustomers[n] += 1;
+							howManyItems[n] += numberOfFood;
+						}
 					}
 				}
-
-
-
-
-
 			}
-
-			// second nested for loop to calculate total price of that unique item
-
-			// for (int l = 0; l < storeItems; l++) {
-			//	if(nameOfCurrFood.equals(itemName[l])) {
-			//		priceOfCart[j] += numberOfFood * itemPrice[l];
-
-			for (int m=0; m<storeItems; m++) {
-				if (howManyItems[m] < 1) {
-					System.out.println("No customers bought " + itemName[m]);
-					
-				} else {
-					
-					System.out.println(howManyCustomers[m] + " customers bought " + howManyItems[m] + " " + itemName[m]);
-
-				}
-			}
-
+			int[] var2 = new int[storeItems];
+			var1 = var2;
 		}
+
+		for (int m=0; m<storeItems; m++) {
+			if (howManyItems[m] < 1) {
+				System.out.println("No customers bought " + itemName[m]);
+			} else {
+				System.out.println(howManyCustomers[m] + " customers bought " + howManyItems[m] + " " + itemName[m]);
+			}
+		}
+
 	}
-	// end second nested for loop
-};
-// end first nested for loop
+}
